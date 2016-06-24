@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OfficialTest/Login(&#x767b;&#x5f55;)/ForgetPassWordVCNew.m"
-            timestampString = "488442238.656477"
+            timestampString = "488449736.933291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-loginAccountButton"
             landmarkType = "5">
          </BreakpointContent>

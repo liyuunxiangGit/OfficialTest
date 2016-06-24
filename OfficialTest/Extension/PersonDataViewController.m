@@ -34,6 +34,7 @@
 -(void)exitLoginBtn:(ZHBlurtView *)view
 {
     NSLog(@"11111");
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

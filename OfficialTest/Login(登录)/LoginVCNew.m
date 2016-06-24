@@ -34,11 +34,13 @@
 @end
 
 @implementation LoginVCNew
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:YES];
-//
-//}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    _phoneTextField.text = nil;
+    _passwordText.text = nil;
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     

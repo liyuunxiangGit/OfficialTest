@@ -105,7 +105,7 @@
     
     UIView *otherVIew = [[UIView alloc] initWithFrame:CGRectMake(0, self.headerImgHeight, self.frame.size.width, self.frame.size.height - self.headerImgHeight)];
     
-    otherVIew.backgroundColor = [UIColor redColor];
+    otherVIew.backgroundColor = [UIColor lightGrayColor];
     self.oterView = otherVIew;
   
     
@@ -120,7 +120,13 @@
     view.backgroundColor = [UIColor yellowColor];
     [otherVIew addSubview:view];
     
-    UIButton *button =[UIButton addBtnImage:@"loginBtn" AndFrame:CGRectMake(30*Width, 200*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];
+//    UILabel *label = [];
+    
+    UIButton *button =[UIButton addBtnImage:nil AndFrame:CGRectMake(30*Width, 240*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];
+    button.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:0.4];
+    [button setTitle:@"退出登录" forState:UIControlStateNormal];
+    button.layer.cornerRadius = 5;
+    button.clipsToBounds = YES;
     
     [otherVIew addSubview:button];
 

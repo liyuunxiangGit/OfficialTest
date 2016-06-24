@@ -14,7 +14,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="VKJ-nB-Bji">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.57179646407859952" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.56078431370000004" green="0.76470588240000004" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="0.57179646409999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="UZi-k1-pja" kind="relationship" relationship="viewControllers" id="7TF-NL-VC0"/>
@@ -32,12 +34,12 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rt-IB-inb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="U9L-Vr-7w1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="测试2" id="8vd-h2-Kkm"/>
+                    <tabBarItem key="tabBarItem" title="测试2" image="我-灰" id="8vd-h2-Kkm"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S1T-6D-fH5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.49538322089999998" blue="0.35677784699999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.56078431370000004" green="0.76470588240000004" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="sN4-MJ-0tb" kind="relationship" relationship="rootViewController" id="3b8-hB-rKs"/>
@@ -77,7 +79,7 @@
                     <view key="view" contentMode="scaleToFill" id="kuq-zp-lGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.77474088649999995" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.8314855914" blue="0.86281054319999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="测试1" id="kZT-sl-rTL"/>
                 </viewController>
@@ -90,12 +92,12 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3u-y4-mYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="I8p-As-p5Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="测试3" id="DRA-Qa-wYb"/>
+                    <tabBarItem key="tabBarItem" title="测试3" image="我-灰" id="DRA-Qa-wYb"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M9t-83-o5z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.49538322089999998" blue="0.35677784699999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.56078431370000004" green="0.76470588240000004" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="WTu-eK-Q0H" kind="relationship" relationship="rootViewController" id="sRf-T6-19S"/>
@@ -128,12 +130,12 @@
         <scene sceneID="x96-dY-pDJ">
             <objects>
                 <navigationController id="FDV-NH-LCU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" id="x9W-Ed-2uG"/>
+                    <tabBarItem key="tabBarItem" title="我" image="我-灰" id="x9W-Ed-2uG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rFr-pV-qvH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.49538322089999998" blue="0.35677784699999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.56078431370000004" green="0.76470588240000004" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="U58-bR-tnu" kind="relationship" relationship="rootViewController" id="lTs-DC-wP2"/>
@@ -182,13 +184,12 @@
         <scene sceneID="yok-OI-Ibv">
             <objects>
                 <navigationController id="UZi-k1-pja" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="测试1" id="OPf-Fj-Ogg"/>
+                    <tabBarItem key="tabBarItem" title="测试1" image="我-灰" id="OPf-Fj-Ogg"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dpB-IJ-wT4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.49538322089999998" blue="0.35677784699999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="1" green="0.49538322089999998" blue="0.35677784699999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.56078431370000004" green="0.76470588240000004" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="KD7-iX-ocy" kind="relationship" relationship="rootViewController" id="zoD-38-Ykm"/>
@@ -199,4 +200,7 @@
             <point key="canvasLocation" x="423.5" y="-933.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="我-灰" width="30" height="30"/>
+    </resources>
 </document>
