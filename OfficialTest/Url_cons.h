@@ -20,7 +20,13 @@
 
 
 //注册前判断
-#define beforeRegistJudge [NSString stringWithFormat:@"%@/exam/selectIfMobile.do",XOHOST]
+#define beforeRegistJudgeURL [NSString stringWithFormat:@"%@/exam/selectIfMobile.do",XOHOST]
+//注册
+#define RegistOfficialURL [NSString stringWithFormat:@"%@/exam/insertUser.do",XOHOST]
+//登录
+#define LoginOfficialUrl [NSString stringWithFormat:@"%@/exam/selectLogin.do",XOHOST]
+//修改密码
+#define ModifiedPwdOfficialUrl [NSString stringWithFormat:@"%@/exam/updatePwd.do",XOHOST]
 #endif /* Url_cons_h */
 
 

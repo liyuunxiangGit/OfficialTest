@@ -11,6 +11,7 @@
 #import "ForgetPassWordVCNew.h"
 #import "YFSplashScreenView.h"
 #import "PersonDataViewController.h"
+#import "LoginNetWorkRequest.h"
 #import "AppDelegate.h"
 @interface LoginVCNew ()
 @property(nonatomic,strong)UIImageView *backImgV;
@@ -70,7 +71,7 @@
     [_backView addSubview:_loginBtn];
     
     _forgetPassWordBtn =[UIButton addBtnImage:nil AndFrame:CGRectMake(215*Width, 340*Height, 90*Width, 20*Height) WithTarget:self action:@selector(forgetPasswordClick)];
-    [_forgetPassWordBtn setTitle:@"忘记密码 ?" forState:UIControlStateNormal];
+    [_forgetPassWordBtn setTitle:@"修改密码 ?" forState:UIControlStateNormal];
     _forgetPassWordBtn.titleLabel.font =[UIFont systemFontOfSize:12*Width weight:0.5];
     [_backView addSubview:_forgetPassWordBtn];
     
@@ -100,11 +101,10 @@
     if ([_phoneTextField.text isEqualToString:@""]||_phoneTextField.text == nil||[_passwordText.text isEqualToString:@""]||_passwordText.text == nil) {
         [FormValidator showAlertWithStr:@"用户名或密码不能为空"];
         return;
-    }else{
-        if (userName) {
-            [FormValidator showAlertWithStr:userName];
-            return;
-        }
+    }else if (IsValidPhoneNum(_phoneTextField.text) != YES) {
+        [FormValidator showAlertWithStr:@"请输入正确的手机号"];
+        return;
+    }else {
         if (passWord) {
             [FormValidator showAlertWithStr:passWord];
             return;
@@ -120,21 +120,24 @@
 -(void)loginAccountInter
 {
     [self.view endEditing:YES];
-    PersonDataViewController *pvc = [[PersonDataViewController alloc]init];
     
-    [self presentViewController:pvc animated:YES completion:nil];
-//    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-//    NSDictionary *dic =[NSDictionary dictionaryWithObjectsAndKeys:_phoneTextField.text,@"number",_passwordText.text,@"password",nil];
-//    [manager POST:loginAccount parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        if ([[dic  objectForKey:@"id"] isEqualToString:@"false"]) {
-//            [FormValidator showAlertWithStr:@"用户名或者密码错误"];
-//        }else{
-//            //用户名密码输入正确后，登录后需要跳转的页面
-//             
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        [FormValidator showAlertWithStr:failTipe];
-//    }];
+    LoginNetWorkRequest *LNWR = [[LoginNetWorkRequest alloc]initWithMobile:_phoneTextField.text Pwd:_passwordText.text ResultBlock:^(NSDictionary *result) {
+        NSLog(@"%@",result);
+        if ([result[@"resultCode"] isEqualToNumber:@(1)]) {
+            PersonDataViewController *pvc = [[PersonDataViewController alloc]init];
+            [self presentViewController:pvc animated:YES completion:nil];
+        }else if ([result[@"resultCode"] isEqualToNumber:@(-1)])
+        {
+            [FormValidator showAlertWithStr:@"该用户不存在!"];
+            _passwordText.text = nil;
+            _phoneTextField.text = nil;
+        }else if ([result[@"resultCode"] isEqualToNumber:@(0)])
+        {
+            [FormValidator showAlertWithStr:@"密码错误!请重新输入"];
+            _passwordText.text = nil;
+        }
+    }];
+    [LNWR exec];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ForgetPassWordVCNew : UIViewController
+@interface ForgetPassWordVCNew : BaseViewController
 
 @end

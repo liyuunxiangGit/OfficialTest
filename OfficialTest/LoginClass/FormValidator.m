@@ -60,7 +60,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil  cancelButtonTitle:nil otherButtonTitles:nil];
     [alert show];
     
-    [self performSelector:@selector(dimissAlert:) withObject:alert afterDelay:2.0];
+    [self performSelector:@selector(dimissAlert:) withObject:alert afterDelay:1.5];
 }
 +(CGRect)rectWidthAndHeightWithStr:(NSString *)str AndFont:(CGFloat)fontFloat
 {

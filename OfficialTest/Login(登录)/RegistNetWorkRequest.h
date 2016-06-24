@@ -10,4 +10,9 @@
 
 @interface RegistNetWorkRequest : BaseSection
 
+@property (nonatomic,copy) NSString *mobile;
+@property (nonatomic,copy) NSString *pwd;
+@property (nonatomic,copy) NSString *nikeName;
+
+-(instancetype)initWithMobile:(NSString *)mobile pwd:(NSString *)pwd  nikeName:(NSString *)nikeName ResultBlock:(void(^)(NSDictionary *result)) result;
 @end

@@ -43,6 +43,8 @@
 		B9DB06A51D1BCA1C003FE07A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B9DB06A41D1BCA1C003FE07A /* libstdc++.tbd */; };
 		B9DB06A81D1BD537003FE07A /* RegistNetWorkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DB06A71D1BD537003FE07A /* RegistNetWorkRequest.m */; };
 		B9DB06AB1D1BD5F5003FE07A /* BeforeRegistJudge.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DB06AA1D1BD5F5003FE07A /* BeforeRegistJudge.m */; };
+		B9E957041D1CC85300F42BAD /* LoginNetWorkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E957031D1CC85300F42BAD /* LoginNetWorkRequest.m */; };
+		B9E957091D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E957081D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,12 +67,12 @@
 		B9DB06071D1B7CE8003FE07A /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		B9DB06081D1B7CE8003FE07A /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		B9DB064C1D1B9117003FE07A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B9DB064F1D1B9184003FE07A /* ForgetPassWordVCNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordVCNew.h; sourceTree = "<group>"; };
-		B9DB06501D1B9184003FE07A /* ForgetPassWordVCNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPassWordVCNew.m; sourceTree = "<group>"; };
+		B9DB064F1D1B9184003FE07A /* ForgetPassWordVCNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetPassWordVCNew.h; path = "../Login(登录)/ForgetPassWordVCNew.h"; sourceTree = "<group>"; };
+		B9DB06501D1B9184003FE07A /* ForgetPassWordVCNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPassWordVCNew.m; path = "../Login(登录)/ForgetPassWordVCNew.m"; sourceTree = "<group>"; };
 		B9DB06511D1B9184003FE07A /* LoginVCNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVCNew.h; sourceTree = "<group>"; };
 		B9DB06521D1B9184003FE07A /* LoginVCNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVCNew.m; sourceTree = "<group>"; };
-		B9DB06531D1B9184003FE07A /* RegisterVCNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterVCNew.h; sourceTree = "<group>"; };
-		B9DB06541D1B9184003FE07A /* RegisterVCNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVCNew.m; sourceTree = "<group>"; };
+		B9DB06531D1B9184003FE07A /* RegisterVCNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterVCNew.h; path = "../Login(登录)/RegisterVCNew.h"; sourceTree = "<group>"; };
+		B9DB06541D1B9184003FE07A /* RegisterVCNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterVCNew.m; path = "../Login(登录)/RegisterVCNew.m"; sourceTree = "<group>"; };
 		B9DB06561D1B9184003FE07A /* FormValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormValidator.h; sourceTree = "<group>"; };
 		B9DB06571D1B9184003FE07A /* FormValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormValidator.m; sourceTree = "<group>"; };
 		B9DB06581D1B9184003FE07A /* SHInvoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHInvoker.h; sourceTree = "<group>"; };
@@ -107,10 +109,14 @@
 		B9DB06A01D1BCA00003FE07A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B9DB06A21D1BCA10003FE07A /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		B9DB06A41D1BCA1C003FE07A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
-		B9DB06A61D1BD537003FE07A /* RegistNetWorkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistNetWorkRequest.h; sourceTree = "<group>"; };
-		B9DB06A71D1BD537003FE07A /* RegistNetWorkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistNetWorkRequest.m; sourceTree = "<group>"; };
-		B9DB06A91D1BD5F5003FE07A /* BeforeRegistJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeRegistJudge.h; sourceTree = "<group>"; };
-		B9DB06AA1D1BD5F5003FE07A /* BeforeRegistJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeRegistJudge.m; sourceTree = "<group>"; };
+		B9DB06A61D1BD537003FE07A /* RegistNetWorkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistNetWorkRequest.h; path = "../Login(登录)/RegistNetWorkRequest.h"; sourceTree = "<group>"; };
+		B9DB06A71D1BD537003FE07A /* RegistNetWorkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistNetWorkRequest.m; path = "../Login(登录)/RegistNetWorkRequest.m"; sourceTree = "<group>"; };
+		B9DB06A91D1BD5F5003FE07A /* BeforeRegistJudge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeforeRegistJudge.h; path = "../Login(登录)/BeforeRegistJudge.h"; sourceTree = "<group>"; };
+		B9DB06AA1D1BD5F5003FE07A /* BeforeRegistJudge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeforeRegistJudge.m; path = "../Login(登录)/BeforeRegistJudge.m"; sourceTree = "<group>"; };
+		B9E957021D1CC85300F42BAD /* LoginNetWorkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginNetWorkRequest.h; sourceTree = "<group>"; };
+		B9E957031D1CC85300F42BAD /* LoginNetWorkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNetWorkRequest.m; sourceTree = "<group>"; };
+		B9E957071D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifiePwdNetWorkRequest.h; sourceTree = "<group>"; };
+		B9E957081D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifiePwdNetWorkRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,8 +232,8 @@
 		B9DB064E1D1B9184003FE07A /* Login(登录) */ = {
 			isa = PBXGroup;
 			children = (
-				B9DB06951D1BC56B003FE07A /* Model */,
 				B9DB06551D1B9184003FE07A /* LoginClass */,
+				B9DB06951D1BC56B003FE07A /* Model */,
 				B9DB06941D1BC3FE003FE07A /* Controller */,
 			);
 			name = "Login(登录)";
@@ -267,7 +273,9 @@
 			children = (
 				B9DB068D1D1BBFBC003FE07A /* NetWork */,
 				B9DB067C1D1BBB57003FE07A /* PersonalData */,
+				B9E956FD1D1CBD9800F42BAD /* 注册 */,
 				B9DB064E1D1B9184003FE07A /* Login(登录) */,
+				B9E957011D1CBDFB00F42BAD /* 修改密码 */,
 			);
 			name = Section;
 			path = Extension;
@@ -351,12 +359,8 @@
 		B9DB06941D1BC3FE003FE07A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B9DB064F1D1B9184003FE07A /* ForgetPassWordVCNew.h */,
-				B9DB06501D1B9184003FE07A /* ForgetPassWordVCNew.m */,
 				B9DB06511D1B9184003FE07A /* LoginVCNew.h */,
 				B9DB06521D1B9184003FE07A /* LoginVCNew.m */,
-				B9DB06531D1B9184003FE07A /* RegisterVCNew.h */,
-				B9DB06541D1B9184003FE07A /* RegisterVCNew.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -364,10 +368,72 @@
 		B9DB06951D1BC56B003FE07A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9E957021D1CC85300F42BAD /* LoginNetWorkRequest.h */,
+				B9E957031D1CC85300F42BAD /* LoginNetWorkRequest.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B9E956FD1D1CBD9800F42BAD /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				B9E957001D1CBDC300F42BAD /* Controller */,
+				B9E956FF1D1CBDBD00F42BAD /* View */,
+				B9E956FE1D1CBDB500F42BAD /* Model */,
+			);
+			name = "注册";
+			sourceTree = "<group>";
+		};
+		B9E956FE1D1CBDB500F42BAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				B9DB06A91D1BD5F5003FE07A /* BeforeRegistJudge.h */,
 				B9DB06AA1D1BD5F5003FE07A /* BeforeRegistJudge.m */,
 				B9DB06A61D1BD537003FE07A /* RegistNetWorkRequest.h */,
 				B9DB06A71D1BD537003FE07A /* RegistNetWorkRequest.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B9E956FF1D1CBDBD00F42BAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		B9E957001D1CBDC300F42BAD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9DB06531D1B9184003FE07A /* RegisterVCNew.h */,
+				B9DB06541D1B9184003FE07A /* RegisterVCNew.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		B9E957011D1CBDFB00F42BAD /* 修改密码 */ = {
+			isa = PBXGroup;
+			children = (
+				B9E957061D1CD03C00F42BAD /* Model */,
+				B9E957051D1CD03400F42BAD /* Controller */,
+			);
+			name = "修改密码";
+			sourceTree = "<group>";
+		};
+		B9E957051D1CD03400F42BAD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9DB064F1D1B9184003FE07A /* ForgetPassWordVCNew.h */,
+				B9DB06501D1B9184003FE07A /* ForgetPassWordVCNew.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		B9E957061D1CD03C00F42BAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9E957071D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.h */,
+				B9E957081D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -500,6 +566,8 @@
 				B9DB06681D1B918E003FE07A /* UIButton+Extension.m in Sources */,
 				B9DB068B1D1BBBCB003FE07A /* UIImage+ImageEffects.m in Sources */,
 				B9DB066B1D1B918E003FE07A /* UITextField+Extension.m in Sources */,
+				B9E957091D1CD0A600F42BAD /* ModifiePwdNetWorkRequest.m in Sources */,
+				B9E957041D1CC85300F42BAD /* LoginNetWorkRequest.m in Sources */,
 				B9DB066A1D1B918E003FE07A /* UILabel+Extension.m in Sources */,
 				B9DB06741D1BA896003FE07A /* YFSplashScreenView.m in Sources */,
 				B9DB06091D1B7CE8003FE07A /* MBProgressHUD+Add.m in Sources */,

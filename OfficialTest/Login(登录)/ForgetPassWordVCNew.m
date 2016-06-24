@@ -7,31 +7,27 @@
 //
 
 #import "ForgetPassWordVCNew.h"
-
+#import "LoginNetWorkRequest.h"
+#import "ModifiePwdNetWorkRequest.h"
 @interface ForgetPassWordVCNew ()
-{
-    int timeCount;
-    NSTimer*timer;
-}
-@property(nonatomic,strong)UILabel *tipLabel;
+
 @property(nonatomic,strong)UIButton *loginBtnReturn;
 @property(nonatomic,strong)UIImageView *backImgV;
 @property(nonatomic,strong)UIImageView *backView;
 @property(nonatomic,strong)UITextField *phoneTextField;
 @property(nonatomic,strong)UIImageView *phoneImgV;
+@property(nonatomic,strong)UITextField *oldpasswordText;
 @property(nonatomic,strong)UITextField *passwordText;
 @property(nonatomic,strong)UIImageView *passwordImgV;
 @property(nonatomic,strong)UIButton *loginBtn;
 
-@property(nonatomic,strong)UITextField *yanzhengTextF;
-@property(nonatomic,strong)UIButton *huoquBtn;
+
 @property(nonatomic,copy)NSString *registStr;
 @end
 
 @implementation ForgetPassWordVCNew
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     _backImgV =[UIImageView addImgWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) AndImage:@"ditu"];
     [self.view addSubview:_backImgV];
@@ -47,144 +43,70 @@
     _phoneTextField.keyboardType =UIKeyboardTypeNumberPad;
     [_backView addSubview:_phoneTextField];
     
-    _passwordText =[self addtextFieldWithHeight:200 AndImgStr:nil AndStr:@"请输入新的密码"];
+    _oldpasswordText = [self addtextFieldWithHeight:200 AndImgStr:nil AndStr:@"请输入旧的密码"];
+    [_backView addSubview:_passwordText];
+    
+    _passwordText =[self addtextFieldWithHeight:250 AndImgStr:nil AndStr:@"请输入新的密码"];
     [_backView addSubview:_passwordText];
     
     _loginBtn =[UIButton addBtnImage:@"forgetPassWord" AndFrame:CGRectMake(30*Width, 300*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];
     [_backView addSubview:_loginBtn];
-    
-    _yanzhengTextF =[self textWithH:250 AndW:140 AndStr:@"输入验证码"];
-    _yanzhengTextF.keyboardType =UIKeyboardTypeNumberPad;
-    [_backView addSubview:_yanzhengTextF];
-    
-    
-    _huoquBtn =[UIButton addBtnImage:nil AndFrame:CGRectMake(180*Width, 250*Width, 110*Width, 36*Height) WithTarget:self action:@selector(registYanZheng)];
-    [_huoquBtn setBackgroundImage:[UIImage imageNamed:@"register_huoqu"] forState:UIControlStateNormal];
-    
-    [_huoquBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [_huoquBtn setTitleColor:whitesColor forState:UIControlStateNormal];
-    _huoquBtn.titleLabel.font =[UIFont systemFontOfSize:12*Width weight:1];
-    [_backView addSubview:_huoquBtn];
-    
-    //验证提交之后的跑秒提示防止用户的重复提交数据有效时间60秒
-    _tipLabel=[[UILabel alloc ]initWithFrame:CGRectMake(180*Width, 250*Height, 110*Width, 35*Height)];
-    _tipLabel =[UILabel addLabelWithFrame:CGRectMake(180*Width, 250*Height, 110*Width, 35*Height) AndText:[[NSString alloc]initWithFormat:@"%ds",timeCount] AndFont:14 AndAlpha:1 AndColor:whitesColor];
-    _tipLabel.textAlignment=NSTextAlignmentCenter;
-    timeCount = 60;
-    _tipLabel.layer.cornerRadius=3;
-    _tipLabel.clipsToBounds=YES;
-    _tipLabel.backgroundColor=[UIColor lightGrayColor];
-    _tipLabel.hidden=YES;
-    
-    [_backView addSubview:_tipLabel];
-    
-    
 }
-
-#pragma mark-->读秒开始
--(void)readSecond{
-    _huoquBtn.hidden=YES;
-    _tipLabel.hidden=NO;
-    timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(dealTimer) userInfo:nil repeats:YES];
-    timer.fireDate=[NSDate distantPast];
-}
-
-#pragma mark-->跑秒操作
--(void)dealTimer{
-    _tipLabel.text=[[NSString alloc]initWithFormat:@"%ds",timeCount];
-    timeCount=timeCount - 1;
-    if(timeCount== 0){
-        timer.fireDate=[NSDate distantFuture];
-        timeCount= 60;
-        _tipLabel.hidden=YES;
-        _huoquBtn.hidden=NO;
-    }
-    
-}
-
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
 }
-
-
-
-//验证码
--(void)registYanZheng
-{
-    if ([_phoneTextField.text isEqualToString:@""]||_phoneTextField.text == nil) {
-        [FormValidator showAlertWithStr:@"请输入手机号"];
-        
-    }else{
-        AFHTTPRequestOperationManager * manager =[AFHTTPRequestOperationManager manager];
-        NSDictionary *dic =[NSDictionary dictionaryWithObjectsAndKeys:_phoneTextField.text,@"userPhoneNumber", nil];
-        [manager POST:validate parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSDictionary *dic =(NSDictionary *)responseObject;
-            //        NSLog(@"%@",dic);
-            [self readSecond];
-            self.registStr = [dic objectForKey:@"yanzheng"];
-            NSLog(@"发送成功%@",responseObject);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            // NSLog(@"失败%@",error);
-        }];
-    }
-    
-}
-
-
-
-//登陆接口
-//登录方法
+//更改密码按钮
 -(void)loginAccountButton
 {
-    NSString *userName =[FormValidator checkMobile:_phoneTextField.text];
-    NSString *passWord=[FormValidator checkPassword:_passwordText.text];
-    if ([_phoneTextField.text isEqualToString:@""]||_phoneTextField.text == nil||[_passwordText.text isEqualToString:@""]||_passwordText.text == nil) {
-        [FormValidator showAlertWithStr:@"用户名或密码不能为空"];
+    if ([_phoneTextField.text isEqualToString:@""]||_phoneTextField.text == nil||[_passwordText.text isEqualToString:@""]||_passwordText.text == nil || [_oldpasswordText.text isEqualToString:@""] || _oldpasswordText.text == nil) {
+        [FormValidator showAlertWithStr:@"手机号或新旧密码都不能为空"];
         return;
-    }else{
-        if (userName) {
-            [FormValidator showAlertWithStr:userName];
-            return;
-        }
-        if (passWord) {
-            [FormValidator showAlertWithStr:passWord];
-            return;
-        }
-        float regi =self.registStr.floatValue;
-        float yanzen =_yanzhengTextF.text.floatValue;
-        
-        if (regi == yanzen) {
-            [self sureData];
-        }else{
-            [FormValidator showAlertWithStr:@"验证码输入不正确，请重新输入"];
-        }
-    }
+    }else if (IsValidPhoneNum(_phoneTextField.text) != YES) {
+        [FormValidator showAlertWithStr:@"请输入正确的手机号"];
+        return;
+    }else if(_passwordText.text.length <6 || _oldpasswordText.text.length < 6){
+        [FormValidator showAlertWithStr:@"密码必须6位以上"];
+    }else {
     
-    
-    
-}
--(void)sureData
-{
-    AFHTTPRequestOperationManager * manager =[AFHTTPRequestOperationManager manager];
-    NSDictionary *dic =[NSDictionary dictionaryWithObjectsAndKeys:_phoneTextField.text,@"number",_passwordText.text,@"password", nil];
-    [manager POST:forgetPassW parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *dic =(NSDictionary *)responseObject;
-        NSDictionary *userDic =[NSDictionary dictionaryWithObjectsAndKeys:_phoneTextField.text,@"phone",_passwordText.text,@"password",[dic objectForKey:@"id"],@"userid",[dic objectForKey:@"name"],@"name", nil];
-        
-        [SHInvoker  saveUserInfo:userDic];
-        [FormValidator showAlertWithStr:@"修改成功"];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    //首先进行登录操作
+    LoginNetWorkRequest *LNWR = [[LoginNetWorkRequest alloc]initWithMobile:_phoneTextField.text Pwd:_oldpasswordText.text ResultBlock:^(NSDictionary *result) {
+        NSLog(@"%@",result);
+        if ([result[@"resultCode"] isEqualToNumber:@(1)]) {
+        //进行更改密码的操作
+            ModifiePwdNetWorkRequest *MPNR = [[ModifiePwdNetWorkRequest alloc]initWithNewPassword:_passwordText.text ResultBlock:^(NSDictionary *modifiePwd) {
+                NSLog(@"%@",modifiePwd);
+                
+                if ([modifiePwd[@"resultCode"] isEqualToNumber:@(1)]) {
+                    [FormValidator showAlertWithStr:@"修改成功,请登录!"];
+                    [self returnLoginBtn];
+                }
+                if ([modifiePwd[@"resultCode"] isEqualToNumber:@(0)]) {
+                    [FormValidator showAlertWithStr:@"新密码与旧密码相同，请进行修改"];
+                }
+                
+
+            }];
+            [MPNR exec];
+
+        }else if ([result[@"resultCode"] isEqualToNumber:@(-1)])
+        {
+            [FormValidator showAlertWithStr:@"该用户不存在!"];
+            _passwordText.text = nil;
+            _oldpasswordText.text = nil;
+            _phoneTextField.text = nil;
+        }else if ([result[@"resultCode"] isEqualToNumber:@(0)])
+        {
+            [FormValidator showAlertWithStr:@"旧密码输入错误!请重新输入"];
+            _oldpasswordText.text = nil;
+        }
     }];
+    [LNWR exec];
+
     
+    }
 }
-
-
-
-
 
 -(UITextField *)addtextFieldWithHeight:(CGFloat)heigh AndImgStr:(NSString *)imgStr AndStr:(NSString *)str
 {
@@ -211,16 +133,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
+
 
 
 @end
