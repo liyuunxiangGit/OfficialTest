@@ -12,6 +12,10 @@
 #import "YFSplashScreenView.h"
 #import "PersonDataViewController.h"
 #import "LoginNetWorkRequest.h"
+#import "CircleImageView.h"
+#import "MainViewController.h"
+#import "UserModel.h"
+#import "CoreArchive+Version.h"
 #import "AppDelegate.h"
 @interface LoginVCNew ()
 @property(nonatomic,strong)UIImageView *backImgV;
@@ -22,6 +26,7 @@
 @property(nonatomic,strong)UIImageView *passwordImgV;
 @property(nonatomic,strong)UIButton *loginBtn;
 @property(nonatomic,strong)UIButton *forgetPassWordBtn;
+@property(nonatomic,strong)UIButton *savePassWordBtn;
 @property(nonatomic,strong)UIButton *registBtn;
 @property(nonatomic,strong)UIImageView *headImgV;
 @property(nonatomic,strong)UIButton *returnTopBtn;
@@ -54,21 +59,32 @@
     [self.view addSubview:_backView];
     _backView.userInteractionEnabled = YES;
     
-    _headImgV =[UIImageView addImgWithFrame:CGRectMake(125*Width, 90*Height, 70*Width, 70*Height) AndImage:@"touxiang"];
-    _headImgV.layer.cornerRadius = 35;
-    _headImgV.clipsToBounds = YES;
-    [_backView addSubview:_headImgV];
+    CircleImageView *headImgv = [[CircleImageView alloc]initWithFrame:CGRectMake(125*Width, 90*Height, 70*Width, 70*Height)];
+    headImgv.backgroundColor = [UIColor clearColor];
+    headImgv.imageName = @"touxiang";
+//    _headImgV =[UIImageView addImgWithFrame:CGRectMake(125*Width, 90*Height, 70*Width, 70*Height) AndImage:@"touxiang"];
+//    _headImgV.layer.cornerRadius = 35;
+//    _headImgV.clipsToBounds = YES;
+    [_backView addSubview:headImgv];
     
     _phoneTextField =[self addtextFieldWithHeight:200 AndImgStr:nil AndStr:@"请输入手机号码"];
+    _phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _phoneTextField.keyboardType =UIKeyboardTypeNumberPad;
     [_backView addSubview:_phoneTextField];
     
     _passwordText =[self addtextFieldWithHeight:250 AndImgStr:nil AndStr:@"请输入密码"];
     _passwordText.secureTextEntry = YES;
+    _passwordText.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_backView addSubview:_passwordText];
     
     _loginBtn =[UIButton addBtnImage:@"loginBtn" AndFrame:CGRectMake(30*Width, 300*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];
     [_backView addSubview:_loginBtn];
+    
+    _savePassWordBtn = [UIButton addBtnImage:nil AndFrame:CGRectMake(30*Width, 340*Height, 90*Width, 20*Height) WithTarget:self action:@selector(savePasswordClick)];
+    [_savePassWordBtn setTitle:@"记住密码 ?" forState:UIControlStateNormal];
+    _savePassWordBtn.titleLabel.font =[UIFont systemFontOfSize:12*Width weight:0.5];
+    [_backView addSubview:_savePassWordBtn];
+
     
     _forgetPassWordBtn =[UIButton addBtnImage:nil AndFrame:CGRectMake(215*Width, 340*Height, 90*Width, 20*Height) WithTarget:self action:@selector(forgetPasswordClick)];
     [_forgetPassWordBtn setTitle:@"修改密码 ?" forState:UIControlStateNormal];
@@ -81,6 +97,10 @@
 -(void)returnLoginBtnsss
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)savePasswordClick
+{
+    
 }
 -(void)forgetPasswordClick{
     ForgetPassWordVCNew *forget=[[ForgetPassWordVCNew alloc]init];
@@ -124,8 +144,24 @@
     LoginNetWorkRequest *LNWR = [[LoginNetWorkRequest alloc]initWithMobile:_phoneTextField.text Pwd:_passwordText.text ResultBlock:^(NSDictionary *result) {
         NSLog(@"%@",result);
         if ([result[@"resultCode"] isEqualToNumber:@(1)]) {
-            PersonDataViewController *pvc = [[PersonDataViewController alloc]init];
-            [self presentViewController:pvc animated:YES completion:nil];
+            
+            //存储个人信息
+            UserModel *userModel = [[UserModel alloc] init];
+            userModel.mobile = _phoneTextField.text;
+            userModel.nickname = [result[@"loginmap"] objectForKey:@"nickname"];
+            BOOL res = [UserModel saveSingleModel:userModel forKey:@"userModel"];
+            
+            if(res){
+                NSLog(@"保存成功");
+            }else{
+                NSLog(@"保存失败");
+            }
+
+            //进行界面跳转
+            UIStoryboard *mainStory = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            MainViewController *vc = [mainStory instantiateViewControllerWithIdentifier:@"gotoMain"];
+//            PersonDataViewController *pvc = [[PersonDataViewController alloc]init];
+            [self presentViewController:vc animated:YES completion:nil];
         }else if ([result[@"resultCode"] isEqualToNumber:@(-1)])
         {
             [FormValidator showAlertWithStr:@"该用户不存在!"];

@@ -8,8 +8,11 @@
 
 #import "PersonDataViewController.h"
 #import "UIImageView+LBBlurredImage.h"
+#import "UserModel.h"
+#import "CoreArchive+Version.h"
 #import "ZHBlurtView.h"
-@interface PersonDataViewController ()
+@interface PersonDataViewController ()<ZHBlurtViewDelegate>
+@property (strong, nonatomic) IBOutlet UIView *backView;
 
 @end
 
@@ -18,11 +21,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    ZHBlurtView *b = [[ZHBlurtView alloc] initWithFrame:self.view.frame WithHeaderImgHeight:200 iconHeight:100];
+    ZHBlurtView *b = [[ZHBlurtView alloc] initWithFrame:CGRectMake(0, 64, _backView.frame.size.width, SCREEN_HEIGHT-64-44) WithHeaderImgHeight:200 iconHeight:100];
     
-    
-    [self.view addSubview:b];
+    UserModel *userModel =[UserModel readSingleModelForKey:@"userModel"];
+    b.nameeee = userModel.nickname;
+    [_backView addSubview:b];
 
+    b.delegate = self;
+  
+
+}
+-(void)exitLoginBtn:(ZHBlurtView *)view
+{
+    NSLog(@"11111");
 }
 
 - (void)didReceiveMemoryWarning {

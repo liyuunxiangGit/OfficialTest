@@ -40,13 +40,16 @@
     [_backView addSubview:_loginBtnReturn];
     
     _phoneTextField =[self addtextFieldWithHeight:150 AndImgStr:nil AndStr:@"请输入手机号码"];
+    _phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _phoneTextField.keyboardType =UIKeyboardTypeNumberPad;
     [_backView addSubview:_phoneTextField];
     
     _oldpasswordText = [self addtextFieldWithHeight:200 AndImgStr:nil AndStr:@"请输入旧的密码"];
+    _oldpasswordText.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_backView addSubview:_passwordText];
     
     _passwordText =[self addtextFieldWithHeight:250 AndImgStr:nil AndStr:@"请输入新的密码"];
+    _passwordText.clearButtonMode = UITextFieldViewModeWhileEditing;
     [_backView addSubview:_passwordText];
     
     _loginBtn =[UIButton addBtnImage:@"forgetPassWord" AndFrame:CGRectMake(30*Width, 300*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];

@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ZHBlurtView;
+@protocol ZHBlurtViewDelegate <NSObject>
 
+-(void)exitLoginBtn:(ZHBlurtView *)view;
+
+@end
 @interface ZHBlurtView : UIView
+
+
+@property (nonatomic,weak) id<ZHBlurtViewDelegate>delegate;
 
 @property (nonatomic,assign)CGFloat headerImgHeight;
 @property (nonatomic,assign)CGFloat iconHeight;
@@ -16,7 +24,7 @@
  *  图片url
  */
 @property (nonatomic,copy)NSString *imgUrl;
-@property (nonatomic,copy)NSString *name;
+@property (nonatomic,copy)NSString *nameeee;
 
 
 - (instancetype)initWithFrame:(CGRect)frame WithHeaderImgHeight:(CGFloat)headerImgHeight iconHeight:(CGFloat)iconHeight;

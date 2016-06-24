@@ -98,7 +98,7 @@
     
     UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(icon.frame) + 10, self.frame.size.width, 20)];
     self.label = name;
-    name.text = (self.name ? self.name : @"zhxx");
+    self.label.text = self.nameeee;
     name.textAlignment = NSTextAlignmentCenter;
     name.textColor = [UIColor whiteColor];
     
@@ -107,16 +107,36 @@
     
     otherVIew.backgroundColor = [UIColor redColor];
     self.oterView = otherVIew;
- 
+  
+    
+    
     // 注意添加顺序
     [scrollView addSubview:otherVIew];
     [self addSubview:imageView];
     [self addSubview:scrollView];
     [scrollView addSubview:icon];
     [scrollView addSubview:name];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 80, 200, 100)];
+    view.backgroundColor = [UIColor yellowColor];
+    [otherVIew addSubview:view];
+    
+    UIButton *button =[UIButton addBtnImage:@"loginBtn" AndFrame:CGRectMake(30*Width, 200*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];
+    
+    [otherVIew addSubview:button];
+
 
 }
-
+-(void)loginAccountButton
+{
+    if ([self.delegate respondsToSelector:@selector(exitLoginBtn:)]) {
+        [self.delegate exitLoginBtn:self];
+    }
+}
+-(void)setNameeee:(NSString *)nameeee
+{
+    _nameeee = nameeee;
+    self.label.text = nameeee;
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     CGFloat offsetY = scrollView.contentOffset.y;
