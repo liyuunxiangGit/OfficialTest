@@ -116,10 +116,7 @@
     [self addSubview:scrollView];
     [scrollView addSubview:icon];
     [scrollView addSubview:name];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 80, 200, 100)];
-    view.backgroundColor = [UIColor yellowColor];
-    [otherVIew addSubview:view];
-    
+        
 //    UILabel *label = [];
     
     UIButton *button =[UIButton addBtnImage:nil AndFrame:CGRectMake(30*Width, 240*Height, 260*Width, 36*Height) WithTarget:self action:@selector(loginAccountButton)];

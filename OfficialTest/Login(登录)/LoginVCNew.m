@@ -30,20 +30,28 @@
 @property(nonatomic,strong)UIButton *registBtn;
 @property(nonatomic,strong)UIImageView *headImgV;
 @property(nonatomic,strong)UIButton *returnTopBtn;
-
+@property(nonatomic,assign)BOOL isSave;
+@property(nonatomic,strong)UserModel *userModel;
 @end
 
 @implementation LoginVCNew
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    _phoneTextField.text = nil;
-    _passwordText.text = nil;
+    UserModel *userModel =[UserModel readSingleModelForKey:@"userModel"];
+    if (userModel.isSavePwd == YES) {
+        _phoneTextField.text = userModel.mobile;
+        _passwordText.text = userModel.passWord;
+    }else
+    {
+        _passwordText.text = nil;
+    }
+    
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _isSave = NO;
     self.vcTagName = @"登陆界面";
     self.view.backgroundColor = [UIColor whiteColor];
     [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(interFaceDesign) userInfo:nil repeats:NO];
@@ -84,6 +92,8 @@
     
     _savePassWordBtn = [UIButton addBtnImage:nil AndFrame:CGRectMake(30*Width, 340*Height, 90*Width, 20*Height) WithTarget:self action:@selector(savePasswordClick)];
     [_savePassWordBtn setTitle:@"记住密码 ?" forState:UIControlStateNormal];
+//    [_savePassWordBtn setImage:[UIImage imageNamed:@"对号无_green"] forState:UIControlStateNormal];
+  
     _savePassWordBtn.titleLabel.font =[UIFont systemFontOfSize:12*Width weight:0.5];
     [_backView addSubview:_savePassWordBtn];
 
@@ -102,7 +112,22 @@
 }
 -(void)savePasswordClick
 {
-    
+    if (_isSave == NO) {
+        
+        [_savePassWordBtn setImage:[UIImage imageNamed:@"对号-红"] forState:UIControlStateNormal];
+        _isSave = YES;
+//        UserModel *userModel = [[UserModel alloc] init];
+//        userModel.isSavePwd = YES;
+//        BOOL res = [UserModel saveSingleModel:userModel forKey:@"userModel"];
+        
+    }else
+    {
+        [_savePassWordBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        _isSave = NO;
+//        UserModel *userModel = [[UserModel alloc] init];
+//        userModel.isSavePwd = NO;
+//        BOOL res = [UserModel saveSingleModel:userModel forKey:@"userModel"];
+    }
 }
 -(void)forgetPasswordClick{
     ForgetPassWordVCNew *forget=[[ForgetPassWordVCNew alloc]init];
@@ -151,6 +176,8 @@
             UserModel *userModel = [[UserModel alloc] init];
             userModel.mobile = _phoneTextField.text;
             userModel.nickname = [result[@"loginmap"] objectForKey:@"nickname"];
+            userModel.passWord = _passwordText.text;
+            userModel.isSavePwd = _isSave;
             BOOL res = [UserModel saveSingleModel:userModel forKey:@"userModel"];
             
             if(res){

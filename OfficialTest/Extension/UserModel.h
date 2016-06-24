@@ -17,7 +17,9 @@ CoreArchiver_MODEL_H
 
 @property (nonatomic,copy) NSString *mobile;
 
-@property (nonatomic,assign) NSString *nickname;
+@property (nonatomic,copy) NSString *nickname;
+@property (nonatomic,copy) NSString *passWord;
+@property (nonatomic,assign) BOOL isSavePwd;
 
 
 @end
